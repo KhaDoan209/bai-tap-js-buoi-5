@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bài tập JS 4</title>
+
+        <!-- Bootstrap 5.2 -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+            integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <!-- Google Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+        <!-- Main CSS  -->
+        <link rel="stylesheet" href="./index.css">
+    </head>
+
+    <body>
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-1 list__bai">
+                    <div class="list-group text-center" id="list-tab" role="tablist">
+
+                        <a class="list-group-item list-group-item-action active my-2 button" id="bai-1-list"
+                            data-bs-toggle="list" href="#bai-1" role="tab" aria-controls="list-home"
+                            onclick="OpenBook()"><i id="book_1" class="fa-solid fa-book-open me-2"></i>Bài 1</a>
+
+                        <a class="list-group-item list-group-item-action my-2 button" id="bai-2-list"
+                            data-bs-toggle="list" href="#bai-2" role="tab" aria-controls="list-profile"
+                            onclick="OpenBook()"><i id="book_2" class="fa-solid fa-book me-2"></i>Bài 2</a>
+
+
+                    </div>
+                </div>
+
+                <div class="col-10">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="bai__1 tab-pane fade show active" id="bai-1" role="tabpanel"
+                            aria-labelledby="list-home-list">
+                            <div class="container">
+                                <h2 class="text-center mb-4">🏫 Quản lý tuyển sinh</h2>
+                                <form class="row g-4">
+                                    <div class="form-group col-4">
+                                        <label class="mb-2" for="bench-mark">Điểm chuẩn</label>
+                                        <input type="number" class="form-control" id="bench-mark">
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <label class="mb-2" for="area">Chọn khu vực</label>
+                                        <select class="form-select" id="area">
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                            <option value="X">X (Khu vực không ưu tiên)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <label class="mb-2" for="object">Chọn đối tượng</label>
+                                        <select class="form-select" id="object">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="0">0 (Đối tượng không ưu tiên)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <label class="mb-2" for="grade-1">Điểm môn 1</label>
+                                        <input type="number" class="form-control" id="grade-1"
+                                            aria-describedby="emailHelp">
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <label class="mb-2" for="grade-2">Điểm môn 2</label>
+                                        <input type="number" class="form-control" id="grade-2">
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <label class="mb-2" for="grade-3">Điểm môn 3</label>
+                                        <input type="number" class="form-control" id="grade-3">
+                                    </div>
+                                    <div class="form-group col-12 d-flex justify-content-end" style="margin-top: 4%">
+                                        <button type="button" onclick="Enrollment()" class="btn btn-primary">Kiểm
+                                            tra</button>
+                                    </div>
+                                </form>
+                                <p id="noti-1"></p>
+                            </div>
+                        </div>
+
+                        <div class="bai__2 tab-pane fade" id="bai-2" role="tabpanel">
+                            <div class="container">
+                                <h2 class="text-center mb-4">🔋 Tính tiền điện</h2>
+                                <form class="row d-flex justify-content-around">
+                                    <div class="form-group col-4">
+                                        <label class="mb-2" for="name">Tên</label>
+                                        <input type="text" class="form-control" id="name">
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <label class="mb-2" for="kw">Số Kw điện</label>
+                                        <input type="number" class="form-control" id="kw">
+                                    </div>
+                                    <div class="form-group col-3 d-flex justify-content-center" style="margin-top: 4%">
+                                        <button type="button" onclick="ShowResult()"
+                                            class="btn btn-primary">Tính</button>
+                                    </div>
+                                </form>
+                                <p id="noti-2"></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+            integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+            crossorigin="anonymous"></script>
+        <script src="./js/index.js"></script>
+        <script src="./js/bai-1.js"></script>
+        <script src="./js/bai-2.js"></script>
+    </body>
+
+</html>
